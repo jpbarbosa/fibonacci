@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Fibonacci</title>
+    <style>
+      body {
+        background: #111;
+        font-family: sans-serif;
+        color: #fff;
+      }
+      #number {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="draw"></div>
+      <div id="number"></div>
+    </div>
+    <script>
+      let fibMemo = [];
+
+      const fib = n => {
+        if (fibMemo[n]) {
+          return fibMemo[n];
+        }
+        if (n < 2) {
+          fibMemo[n] = n;
+        } else {
+          fibMemo[n] = fib(n - 1) + fib(n - 2);
+        }
+        return fibMemo[n];
+      };
+
+      let timeout = 100;
+
+      const direction = ['bottom', 'right', 'top', 'left'];
+
+      let rotation = 90;
+      let leftCursor = 300;
+      let topCursor = 300;
+      let previousSize = 0;
+
+      const createDiv = (fib, index) => {
+        const size = fib;
+        const directionString = direction[index % 4];
+
+        switch (directionString) {
+          case 'bottom':
+            leftCursor -= size;
+            break;
+          case 'right':
+            topCursor += previousSize;
+            break;
+          case 'top':
+            leftCursor += previousSize;
+            topCursor -= size - previousSize;
+            break;
+          case 'left':
+            leftCursor -= size - previousSize;
+            topCursor -= size;
+            break;
+        }
+
+        const indexStr = `Index: ${index}`;
+        const fibStr = `Fibonacci: ${fib}`;
+
+        const div = document.createElement('div');
+        div.className = 'fib';
+        div.style.position = 'absolute';
+        div.style.background = 'radial-gradient(at 100% 100%, #000, #0ff)';
+        div.style.width = `${size}px`;
+        div.style.height = `${size}px`;
+        div.style.borderTopLeftRadius = `${size}px`;
+        div.style.transform = `rotate(${(rotation -= 90)}deg)`;
+        div.style.left = `${leftCursor}px`;
+        div.style.top = `${topCursor}px`;
+        div.title = `${indexStr}\n${fibStr}`;
+        document.getElementById('draw').appendChild(div);
+
+        document.getElementById(
+          'number'
+        ).innerHTML = `${indexStr}<br>${fibStr}`;
+
+        previousSize = size;
+      };
+
+      const drawFib = () => {
+        fibMemo.forEach((fib, index) => {
+          setTimeout(() => createDiv(fib, index), index * timeout);
+        });
+      };
+
+      const newFib = n => {
+        n = n || prompt('New Fibonacci');
+        document.getElementById('draw').innerHTML = '';
+        rotation = 90;
+        leftCursor = 300;
+        topCursor = 300;
+        previousSize = 0;
+        fibMemo = [];
+        fib(n);
+        drawFib();
+      };
+
+      newFib(15);
+
+      document.getElementById('number').addEventListener('click', () => {
+        newFib();
+      });
+    </script>
+  </body>
+</html>
