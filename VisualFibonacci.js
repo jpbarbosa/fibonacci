@@ -1,8 +1,8 @@
 import FibonacciSequence from './FibonacciSequence.js';
 
-class VisualFibonacci {
-  static directions = ['bottom', 'right', 'top', 'left'];
+const directions = ['bottom', 'right', 'top', 'left'];
 
+class VisualFibonacci {
   constructor(n) {
     this.sequence = new FibonacciSequence(n).sequence;
     this.timeout = 100;
@@ -16,7 +16,7 @@ class VisualFibonacci {
     const fib = this.sequence[index];
     const size = fib;
     //(fib * window.innerWidth) / this.sequence[this.sequence.length - 1];
-    const directionStr = VisualFibonacci.directions[index % 4];
+    const directionStr = directions[index % 4];
 
     switch (directionStr) {
       case 'bottom':
