@@ -2,23 +2,19 @@
   <head>
     <title>Fibonacci</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-        background: #111;
-        font-family: sans-serif;
-        color: #fff;
-      }
-      #number {
-        position: absolute;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
     <div id="root">
       <div id="draw"></div>
-      <div id="number"></div>
+      <div id="info">
+        <div><h1>Visual Fibonacci</h1></div>
+        <div id="number"><br /><br /></div>
+        <div id="instructions">Use Scroll To Change</div>
+        <div id="repository">
+          <a href="https://github.com/jpbarbosa/fibonacci">View on GitHub</a>
+        </div>
+      </div>
     </div>
     <script type="module" src="./main.js"></script>
   </body>

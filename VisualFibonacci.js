@@ -3,9 +3,9 @@ import FibonacciSequence from './FibonacciSequence.js';
 const directions = ['bottom', 'right', 'top', 'left'];
 
 class VisualFibonacci {
-  constructor(n) {
+  constructor(n, timeout) {
     this.sequence = new FibonacciSequence(n).sequence;
-    this.timeout = 100;
+    this.timeout = timeout;
     this.rotation = 90;
     this.leftCursor = window.innerWidth / 2;
     this.topCursor = window.innerHeight / 2;
@@ -36,7 +36,7 @@ class VisualFibonacci {
     }
 
     const indexStr = `Index: ${index}`;
-    const fibStr = `Fibonacci: ${fib}`;
+    const fibStr = `Fib: ${fib}`;
 
     const div = document.createElement('div');
     div.className = 'fib';
@@ -58,7 +58,11 @@ class VisualFibonacci {
 
   render() {
     this.sequence.forEach((fib, index) => {
-      setTimeout(() => this.createDiv(index), index * this.timeout);
+      if (this.timeout) {
+        setTimeout(() => this.createDiv(index), index * this.timeout);
+      } else {
+        this.createDiv(index);
+      }
     });
   }
 }
