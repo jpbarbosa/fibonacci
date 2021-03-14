@@ -10,11 +10,7 @@ https://jpbarbosa.github.io/fibonacci
 
 Scroll up/down to change the sequence length:
 
-<a href="https://jpbarbosa.github.io/fibonacci"><img src="https://github.com/jpbarbosa/fibonacci/blob/master/src/VisualFibonacci.gif" width="50%" alt="Visual Fibonacci"></a>
-
-## Sequence Definition
-
-> In mathematics, the Fibonacci numbers, commonly denoted Fn, form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. [Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_number)
+<a href="https://jpbarbosa.github.io/fibonacci"><img src="https://github.com/jpbarbosa/fibonacci/blob/master/VisualFibonacci.gif" width="50%" alt="Visual Fibonacci"></a>
 
 ## JavaScript Class
 
@@ -41,3 +37,7 @@ class FibonacciSequence {
 
 export default FibonacciSequence;
 ```
+
+## Sequence Definition
+
+> In mathematics, the Fibonacci numbers, commonly denoted Fn, form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. [Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_number)
